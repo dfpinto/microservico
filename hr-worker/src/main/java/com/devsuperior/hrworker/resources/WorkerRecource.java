@@ -35,6 +35,23 @@ public class WorkerRecource {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Worker> findById(@PathVariable Integer id) {
+		
+		/* Interrompe o serviço de propósotio para teste de fluxo alternativo usando hystrix.
+		int i = 0;
+		if(i == 0) {
+			throw new RuntimeException("Test");
+		}
+		*/
+		
+		/* Conta 3 segundos simulando demora na resposta do serviço.
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+		
 		logger.info("PORT: " + env.getProperty("local.server.port"));
 		
 		Worker obj = workerRepository.findById(id).get();
