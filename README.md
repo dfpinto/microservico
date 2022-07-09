@@ -47,6 +47,7 @@ docker run -p 8761:8761 --name hr-eureka-server --network hr-net hr-eureka-serve
 ```
 
 ## hr-worker
+## não coloco a porta por ser aleatório
 ```
 FROM openjdk:11
 VOLUME /tmp
@@ -58,6 +59,7 @@ mvnw clean package -DskipTests
 
 docker build -t hr-worker:v1 .
 
+## não coloco nem a porta nem o nome do container pois além de receber uma porta aleatória ainda será escalável
 docker run -P --network hr-net hr-worker:v1
 ```
 
